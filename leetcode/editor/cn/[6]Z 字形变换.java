@@ -56,24 +56,34 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String convert(String s, int numRows) {
-        if (numRows == 1) return s;
-        StringBuilder[] sb = new StringBuilder[numRows];
-        for (int i = 0; i < numRows; i++) {
-            sb[i] = new StringBuilder();
-        }
-        int i = 0, flag = 1;
-        for (char c : s.toCharArray()) {
-            sb[i].append(c);
-            if (i == 0 || i == numRows - 1) {
-                flag = -flag;
+        if( numRows == 1)
+            return s;
+        int temp = 2*numRows - 2;
+        StringBuilder str = new StringBuilder();
+        for(int i = 0; i < numRows; i++){
+            //第0行
+            if(i == 0){
+                for(int k = 0; k * temp < s.length(); k++){
+                    str.append(s.charAt(k*temp));
+                }
             }
-            i += flag;
+            //第numRows-1行
+            else if(i == numRows -1){
+                for(int k = 0; k*temp+numRows-1 < s.length();k++){
+                    str.append(s.charAt(k*temp+numRows-1));
+                }
+            }
+            //中间行
+            else{
+                for(int k = 0; k*temp+i < s.length(); k++){
+                    str.append(s.charAt(k*temp+i));
+                    if((k+1)*temp -i < s.length()){
+                        str.append(s.charAt((k+1)*temp - i));
+                    }
+                }
+            }
         }
-        StringBuilder res = new StringBuilder();
-        for (StringBuilder sb1 : sb) {
-            res.append(sb1);
-        }
-        return res.toString();
+        return str.toString();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
