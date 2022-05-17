@@ -44,28 +44,29 @@
 // 进阶：你能不将整数转为字符串来解决这个问题吗？ 
 // Related Topics 数学 👍 2001 👎 0
 
-public class Q9_PalindromeNumber{
-  public static void main(String[] args) {
-       Solution solution = new Q9_PalindromeNumber().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isPalindrome(int x) {
-        if(x < 0) return false;
-        int n = 1;
-        while(x / n >= 10){
-            n *= 10;
-        }
-        while(x > 0){
-            int high = x / n;
-            int low = x % 10;
-            if(high != low) return false;
-            x = (x % n) / 10;
-            n /= 100;
-        }
-        return true;
+public class Q9_PalindromeNumber {
+    public static void main(String[] args) {
+        Solution solution = new Q9_PalindromeNumber().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean isPalindrome(int x) {
+            if (x < 0) return false;
+            int n = 1;
+            while (x / n >= 10) {
+                n *= 10;
+            }
+            while (x > 0) {
+                int high = x / n;
+                int low = x % 10;
+                if (high != low) return false;
+                x = (x % n) / 10;
+                n /= 100;
+            }
+            return true;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

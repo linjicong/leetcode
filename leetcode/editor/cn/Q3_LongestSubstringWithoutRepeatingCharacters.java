@@ -37,26 +37,27 @@
 // 
 // Related Topics 哈希表 字符串 滑动窗口 👍 7555 👎 0
 
-public class Q3_LongestSubstringWithoutRepeatingCharacters{
-  public static void main(String[] args) {
-       Solution solution = new Q3_LongestSubstringWithoutRepeatingCharacters().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        int[] map = new int[256];
-        int max = 0;
-        int start = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (map[s.charAt(i)] != 0) {
-                start = Math.max(map[s.charAt(i)], start);
-            }
-            max = Math.max(max, i - start + 1);
-            map[s.charAt(i)] = i + 1;
-        }
-        return max;
+public class Q3_LongestSubstringWithoutRepeatingCharacters {
+    public static void main(String[] args) {
+        Solution solution = new Q3_LongestSubstringWithoutRepeatingCharacters().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int lengthOfLongestSubstring(String s) {
+            int[] map = new int[256];
+            int max = 0;
+            int start = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (map[s.charAt(i)] != 0) {
+                    start = Math.max(map[s.charAt(i)], start);
+                }
+                max = Math.max(max, i - start + 1);
+                map[s.charAt(i)] = i + 1;
+            }
+            return max;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

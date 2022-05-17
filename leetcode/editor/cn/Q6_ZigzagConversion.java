@@ -52,43 +52,44 @@
 // 
 // Related Topics 字符串 👍 1671 👎 0
 
-public class Q6_ZigzagConversion{
-  public static void main(String[] args) {
-       Solution solution = new Q6_ZigzagConversion().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String convert(String s, int numRows) {
-        if( numRows == 1)
-            return s;
-        int temp = 2*numRows - 2;
-        StringBuilder str = new StringBuilder();
-        for(int i = 0; i < numRows; i++){
-            //第0行
-            if(i == 0){
-                for(int k = 0; k * temp < s.length(); k++){
-                    str.append(s.charAt(k*temp));
+public class Q6_ZigzagConversion {
+    public static void main(String[] args) {
+        Solution solution = new Q6_ZigzagConversion().new Solution();
+    }
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public String convert(String s, int numRows) {
+            if (numRows == 1)
+                return s;
+            int temp = 2 * numRows - 2;
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < numRows; i++) {
+                //第0行
+                if (i == 0) {
+                    for (int k = 0; k * temp < s.length(); k++) {
+                        str.append(s.charAt(k * temp));
+                    }
                 }
-            }
-            //第numRows-1行
-            else if(i == numRows -1){
-                for(int k = 0; k*temp+numRows-1 < s.length();k++){
-                    str.append(s.charAt(k*temp+numRows-1));
+                //第numRows-1行
+                else if (i == numRows - 1) {
+                    for (int k = 0; k * temp + numRows - 1 < s.length(); k++) {
+                        str.append(s.charAt(k * temp + numRows - 1));
+                    }
                 }
-            }
-            //中间行
-            else{
-                for(int k = 0; k*temp+i < s.length(); k++){
-                    str.append(s.charAt(k*temp+i));
-                    if((k+1)*temp -i < s.length()){
-                        str.append(s.charAt((k+1)*temp - i));
+                //中间行
+                else {
+                    for (int k = 0; k * temp + i < s.length(); k++) {
+                        str.append(s.charAt(k * temp + i));
+                        if ((k + 1) * temp - i < s.length()) {
+                            str.append(s.charAt((k + 1) * temp - i));
+                        }
                     }
                 }
             }
+            return str.toString();
         }
-        return str.toString();
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

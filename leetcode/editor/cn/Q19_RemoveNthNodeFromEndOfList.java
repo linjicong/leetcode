@@ -41,44 +41,45 @@
 
 // https://blog.csdn.net/weixin_40446252/article/details/108393009
 // 哨兵节点
-public class Q19_RemoveNthNodeFromEndOfList{
-  public static void main(String[] args) {
-       Solution solution = new Q19_RemoveNthNodeFromEndOfList().new Solution();
-       ListNode head=new ListNode(1);
-       head.next=new ListNode(2);
-       head.next.next=new ListNode(3);
-       head.next.next.next=new ListNode(4);
-       head.next.next.next.next=new ListNode(5);
-       solution.removeNthFromEnd(head,3);
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-      ListNode dummy = new ListNode(0);
-      dummy.next = head;
-      ListNode first = dummy;
-      ListNode second = dummy;
-      for (int i = 0; i < n + 1; i++) {
-        first = first.next;
-      }
-      while (first != null) {
-        first = first.next;
-        second = second.next;
-      }
-      second.next = second.next.next;
-      return dummy.next;
+public class Q19_RemoveNthNodeFromEndOfList {
+    public static void main(String[] args) {
+        Solution solution = new Q19_RemoveNthNodeFromEndOfList().new Solution();
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+        solution.removeNthFromEnd(head, 3);
     }
-}
+    //leetcode submit region begin(Prohibit modification and deletion)
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode first = dummy;
+            ListNode second = dummy;
+            for (int i = 0; i < n + 1; i++) {
+                first = first.next;
+            }
+            while (first != null) {
+                first = first.next;
+                second = second.next;
+            }
+            second.next = second.next.next;
+            return dummy.next;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

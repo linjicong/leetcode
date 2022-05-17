@@ -79,46 +79,47 @@
 // 
 // Related Topics 字符串 👍 1432 👎 0
 
-public class Q8_StringToIntegerAtoi{
-  public static void main(String[] args) {
-       Solution solution = new Q8_StringToIntegerAtoi().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int myAtoi(String s) {
-        if(s==null||s.length()==0) {
-            return 0;
-        }
-        char[] array = s.toCharArray();
-        long result = 0; // 要返回的结果result
-        int count = 0; // 记录‘+'或者‘-'出现的次数
-        int num = 0; // 判断空格出现的位置
-        int flag = 1; // 正数还是负数
-        for (int i = 0; i < array.length; i++) {
-            Character c = array[i];
-            if(Character.isDigit(c)){
-                result = result*10+Character.getNumericValue(c);
-                // 判断是否溢出
-                if(flag==1 && result>Integer.MAX_VALUE){
-                    return Integer.MAX_VALUE;
-                }else if(flag==-1 && -result<Integer.MIN_VALUE) {
-                    return Integer.MIN_VALUE;
-                }
-                num++;
-            }else if(Character.isSpaceChar(c)&&num==0&&count==0) {
-                continue;
-            }else if(c=='+'&&count==0&&num==0){
-                count = 1;
-            }else if(c=='-'&&count==0&&num==0){
-                flag = -1;
-                count = 1;
-            }else{
-                return (int) (flag*result);
-            }
-        }
-        return (int) (flag*result);
+public class Q8_StringToIntegerAtoi {
+    public static void main(String[] args) {
+        Solution solution = new Q8_StringToIntegerAtoi().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int myAtoi(String s) {
+            if (s == null || s.length() == 0) {
+                return 0;
+            }
+            char[] array = s.toCharArray();
+            long result = 0; // 要返回的结果result
+            int count = 0; // 记录‘+'或者‘-'出现的次数
+            int num = 0; // 判断空格出现的位置
+            int flag = 1; // 正数还是负数
+            for (int i = 0; i < array.length; i++) {
+                Character c = array[i];
+                if (Character.isDigit(c)) {
+                    result = result * 10 + Character.getNumericValue(c);
+                    // 判断是否溢出
+                    if (flag == 1 && result > Integer.MAX_VALUE) {
+                        return Integer.MAX_VALUE;
+                    } else if (flag == -1 && -result < Integer.MIN_VALUE) {
+                        return Integer.MIN_VALUE;
+                    }
+                    num++;
+                } else if (Character.isSpaceChar(c) && num == 0 && count == 0) {
+                    continue;
+                } else if (c == '+' && count == 0 && num == 0) {
+                    count = 1;
+                } else if (c == '-' && count == 0 && num == 0) {
+                    flag = -1;
+                    count = 1;
+                } else {
+                    return (int) (flag * result);
+                }
+            }
+            return (int) (flag * result);
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

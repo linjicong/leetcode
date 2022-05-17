@@ -40,54 +40,55 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Q18_FourSum{
-  public static void main(String[] args) {
-       Solution solution = new Q18_FourSum().new Solution();
-       int[] nums = {-2,-1,-1,1,1,2,2};
-       List<List<Integer>> result=solution.fourSum(nums, 0);
-       System.out.println(result);
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
-        if (nums.length < 3) return result;
-        int length = nums.length;
-        for(int i = 0; i < length; i++){
-            for(int j = i + 1; j < length; j++){
-                int h = j + 1;
-                int k = length - 1;
-                while (h < k){
-                    int sum = nums[i] + nums[j] + nums[h] + nums[k];
-                    if (sum < target){
-                        h++;
+public class Q18_FourSum {
+    public static void main(String[] args) {
+        Solution solution = new Q18_FourSum().new Solution();
+        int[] nums = {-2, -1, -1, 1, 1, 2, 2};
+        List<List<Integer>> result = solution.fourSum(nums, 0);
+        System.out.println(result);
+    }
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public List<List<Integer>> fourSum(int[] nums, int target) {
+            List<List<Integer>> result = new ArrayList<>();
+            Arrays.sort(nums);
+            if (nums.length < 3) return result;
+            int length = nums.length;
+            for (int i = 0; i < length; i++) {
+                for (int j = i + 1; j < length; j++) {
+                    int h = j + 1;
+                    int k = length - 1;
+                    while (h < k) {
+                        int sum = nums[i] + nums[j] + nums[h] + nums[k];
+                        if (sum < target) {
+                            h++;
 //                        while (h < k && nums[h] == nums[h + 1]) h++;
-                    }else if(sum>target){
-                        k--;
+                        } else if (sum > target) {
+                            k--;
 //                        while (h < k && nums[k] == nums[k - 1]) k--;
-                    }else{
-                        boolean exist = false;
-                        for (List<Integer> integers : result) {
-                            if (integers.get(0).equals(nums[i]) && integers.get(1).equals(nums[j]) && integers.get(2).equals(nums[h]) && integers.get(3).equals(nums[k])) {
-                                exist = true;
-                                break;
+                        } else {
+                            boolean exist = false;
+                            for (List<Integer> integers : result) {
+                                if (integers.get(0).equals(nums[i]) && integers.get(1).equals(nums[j]) && integers.get(2).equals(nums[h]) && integers.get(3).equals(nums[k])) {
+                                    exist = true;
+                                    break;
+                                }
                             }
-                        }
-                        if(!exist) {
-                            result.add(Arrays.asList(nums[i], nums[j], nums[h], nums[k]));
-                        }
-                        k--;
-                        h++;
+                            if (!exist) {
+                                result.add(Arrays.asList(nums[i], nums[j], nums[h], nums[k]));
+                            }
+                            k--;
+                            h++;
 //                        while (h < k && nums[h] == nums[h + 1]) h++;
 //                        while (h < k && nums[k] == nums[k - 1]) k--;
+                        }
                     }
                 }
             }
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

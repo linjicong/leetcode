@@ -42,41 +42,43 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Q17_LetterCombinationsOfAPhoneNumber{
-  public static void main(String[] args) {
-       Solution solution = new Q17_LetterCombinationsOfAPhoneNumber().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<String> letterCombinations(String digits) {
-      List<String> res = new ArrayList<>();
-      if(digits.length()==0) return res;
-      Map<Character,String> map = new HashMap<>();
-      map.put('2',"abc");
-      map.put('3',"def");
-      map.put('4',"ghi");
-      map.put('5',"jkl");
-      map.put('6',"mno");
-      map.put('7',"pqrs");
-      map.put('8',"tuv");
-      map.put('9',"wxyz");
-      StringBuilder sb = new StringBuilder();
-      dfs(res,sb,digits,map,0);
-      return res;
+public class Q17_LetterCombinationsOfAPhoneNumber {
+    public static void main(String[] args) {
+        Solution solution = new Q17_LetterCombinationsOfAPhoneNumber().new Solution();
     }
-    void dfs(List<String> res,StringBuilder sb,String digits,Map<Character,String> map,int index){
-      if(index==digits.length()){
-        res.add(sb.toString());
-        return;
-      }
-      String str = map.get(digits.charAt(index));
-      for(int i=0;i<str.length();i++){
-        sb.append(str.charAt(i));
-        dfs(res,sb,digits,map,index+1);
-        sb.deleteCharAt(sb.length()-1);
-      }
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public List<String> letterCombinations(String digits) {
+            List<String> res = new ArrayList<>();
+            if (digits.length() == 0) return res;
+            Map<Character, String> map = new HashMap<>();
+            map.put('2', "abc");
+            map.put('3', "def");
+            map.put('4', "ghi");
+            map.put('5', "jkl");
+            map.put('6', "mno");
+            map.put('7', "pqrs");
+            map.put('8', "tuv");
+            map.put('9', "wxyz");
+            StringBuilder sb = new StringBuilder();
+            dfs(res, sb, digits, map, 0);
+            return res;
+        }
+
+        void dfs(List<String> res, StringBuilder sb, String digits, Map<Character, String> map, int index) {
+            if (index == digits.length()) {
+                res.add(sb.toString());
+                return;
+            }
+            String str = map.get(digits.charAt(index));
+            for (int i = 0; i < str.length(); i++) {
+                sb.append(str.charAt(i));
+                dfs(res, sb, digits, map, index + 1);
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

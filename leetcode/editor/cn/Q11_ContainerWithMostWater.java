@@ -35,28 +35,28 @@
 // 
 // Related Topics 贪心 数组 双指针 👍 3481 👎 0
 
-public class Q11_ContainerWithMostWater{
-  public static void main(String[] args) {
-       Solution solution = new Q11_ContainerWithMostWater().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maxArea(int[] height) {
-        int max = 0;
-        int i = 0;
-        int j = height.length - 1;
-        while (i < j) {
-            max = Math.max(max, Math.min(height[i], height[j]) * (j - i));
-            if (height[i] < height[j]) {
-                i++;
-            }
-            else {
-                j--;
-            }
-        }
-        return max;
+public class Q11_ContainerWithMostWater {
+    public static void main(String[] args) {
+        Solution solution = new Q11_ContainerWithMostWater().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int maxArea(int[] height) {
+            int max = 0;
+            int i = 0;
+            int j = height.length - 1;
+            while (i < j) {
+                max = Math.max(max, Math.min(height[i], height[j]) * (j - i));
+                if (height[i] < height[j]) {
+                    i++;
+                } else {
+                    j--;
+                }
+            }
+            return max;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

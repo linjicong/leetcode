@@ -45,25 +45,27 @@
 // 
 // Related Topics 递归 字符串 动态规划 👍 2967 👎 0
 
-public class Q10_RegularExpressionMatching{
-  public static void main(String[] args) {
-       Solution solution = new Q10_RegularExpressionMatching().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isMatch(String s, String p) {
-        return isMatch(s, 0, p, 0);
+public class Q10_RegularExpressionMatching {
+    public static void main(String[] args) {
+        Solution solution = new Q10_RegularExpressionMatching().new Solution();
     }
-    private boolean isMatch(String s, int i, String p, int j) {
-      if (j == p.length()) {
-          return i == s.length();
-      }
-      if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
-          return isMatch(s, i, p, j + 2) || (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') && isMatch(s, i + 1, p, j));
-      }
-      return i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') && isMatch(s, i + 1, p, j + 1);
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean isMatch(String s, String p) {
+            return isMatch(s, 0, p, 0);
+        }
+
+        private boolean isMatch(String s, int i, String p, int j) {
+            if (j == p.length()) {
+                return i == s.length();
+            }
+            if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
+                return isMatch(s, i, p, j + 2) || (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') && isMatch(s, i + 1, p, j));
+            }
+            return i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') && isMatch(s, i + 1, p, j + 1);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

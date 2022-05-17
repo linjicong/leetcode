@@ -42,24 +42,25 @@
 // 
 // Related Topics 数学 👍 3508 👎 0
 
-public class Q7_ReverseInteger{
-  public static void main(String[] args) {
-       Solution solution = new Q7_ReverseInteger().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int reverse(int x) {
-        long result = 0;
-        while (x != 0) {
-            result = result * 10 + x % 10;
-            x /= 10;
-        }
-        if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
-            return 0;
-        }
-        return (int) result;
+public class Q7_ReverseInteger {
+    public static void main(String[] args) {
+        Solution solution = new Q7_ReverseInteger().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int reverse(int x) {
+            long result = 0;
+            while (x != 0) {
+                result = result * 10 + x % 10;
+                x /= 10;
+            }
+            if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
+                return 0;
+            }
+            return (int) result;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

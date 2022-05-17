@@ -29,23 +29,24 @@
 // 
 // Related Topics 字符串 👍 2237 👎 0
 
-public class Q14_LongestCommonPrefix{
-  public static void main(String[] args) {
-       Solution solution = new Q14_LongestCommonPrefix().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String longestCommonPrefix(String[] strs) {
-        if (strs.length == 0) return "";
-        String res = strs[0];
-        for (int i = 1; i < strs.length; i++) {
-            while (strs[i].indexOf(res) != 0) {
-                res = res.substring(0, res.length() - 1);
-            }
-        }
-        return res;
+public class Q14_LongestCommonPrefix {
+    public static void main(String[] args) {
+        Solution solution = new Q14_LongestCommonPrefix().new Solution();
     }
-}
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public String longestCommonPrefix(String[] strs) {
+            if (strs.length == 0) return "";
+            String res = strs[0];
+            for (int i = 1; i < strs.length; i++) {
+                while (strs[i].indexOf(res) != 0) {
+                    res = res.substring(0, res.length() - 1);
+                }
+            }
+            return res;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
