@@ -28,32 +28,42 @@
 public class Q59_SpiralMatrixIi {
     public static void main(String[] args) {
         Solution solution = new Q59_SpiralMatrixIi().new Solution();
+        int[][] ints = solution.generateMatrix(5);
+        System.out.println(ints);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[][] generateMatrix(int n) {
-            int[][] ans = new int[n][n];
+            int[][] a = new int[n][n];
             int num = 1;
-            int i = 0, j = 0;
-            int x = n - 1, y = n - 1;
+            int i = 0, j = 0;//行列
+            int x = n - 1, y = n - 1;//边界
+            int count = 0;
             while (num <= n * n) {
-                for (j = i; j <= y; j++) {
-                    ans[i][j] = num++;
+                while (j < (n - count)) {
+                    a[i][j++] = num++;
                 }
-                for (i = i + 1; i <= x; i++) {
-                    ans[i][j] = num++;
+                i++;
+                j--;
+                while (i < (n - count)) {
+                    a[i++][j] = num++;
                 }
-                for (j = j - 1; j >= i; j--) {
-                    ans[i][j] = num++;
+                i--;
+                j--;
+                while (j > (count - 1)) {
+                    a[i][j--] = num++;
                 }
-                for (i = i - 1; i >= j; i--) {
-                    ans[i][j] = num++;
+                i--;
+                j++;
+                while (i > count) {
+                    a[i--][j] = num++;
                 }
-                x--;
-                y--;
+                i++;
+                j++;
+                count++;
             }
-            return ans;
+            return a;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
