@@ -1,5 +1,6 @@
 //使用下面描述的算法可以扰乱字符串 s 得到字符串 t ：
 //
+//
 // 如果字符串的长度为 1 ，算法停止
 // 如果字符串的长度 > 1 ，执行下述步骤：
 //
@@ -7,7 +8,6 @@
 // 随机 决定是要「交换两个子字符串」还是要「保持这两个子字符串的顺序不变」。即，在执行这一步骤之后，s 可能是 s = x + y 或者 s = y +
 //x 。
 // 在 x 和 y 这两个子字符串上继续从步骤 1 开始递归执行此算法。
-//
 //
 //
 //
@@ -54,34 +54,48 @@
 // 1 <= s1.length <= 30
 // s1 和 s2 由小写英文字母组成
 //
-// Related Topics 字符串 动态规划 👍 464 👎 0
+//
+// Related Topics 字符串 动态规划 👍 580 👎 0
 
+//扰乱字符串
 public class Q87_ScrambleString{
-  public static void main(String[] args) {
-       Solution solution = new Q87_ScrambleString().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
+    public static void main(String[] args) {
+        Solution solution = new Q87_ScrambleString().new Solution();
+        // TO TEST
+        // 测试用例
+        System.out.println(solution.isScramble("great", "rgeat")); // 输出: true
+        System.out.println(solution.isScramble("abcde", "caebd")); // 输出: false
+        System.out.println(solution.isScramble("a", "a")); // 输出: true
+
+    }
+    //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isScramble(String s1, String s2) {
         if (s1.length() != s2.length()) return false;
         if (s1.equals(s2)) return true;
         int len = s1.length();
         boolean[][][] dp = new boolean[len][len][len + 1];
+
+        // 初始化长度为1的情况
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 dp[i][j][1] = s1.charAt(i) == s2.charAt(j);
             }
         }
+
+        // 填充动态规划表
         for (int l = 2; l <= len; l++) {
             for (int i = 0; i + l - 1 < len; i++) {
                 for (int j = 0; j + l - 1 < len; j++) {
                     for (int k = 1; k < l; k++) {
                         dp[i][j][l] = dp[i][j][k] && dp[i + k][j + k][l - k] ||
                                 dp[i][j + l - k][k] && dp[i + k][j][l - k];
+                        if (dp[i][j][l]) break; // 提前结束内层循环
                     }
                 }
             }
         }
+
         return dp[0][0][len];
     }
 }
